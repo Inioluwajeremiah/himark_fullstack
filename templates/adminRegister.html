@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="sub-title">Register New Admin</p>
+<p class="success-message sms">{{success_message}}</p>
+<p class="error-message sms">{{error_message}}</p>
+<p class="error-message sms">{{userexists}}</p>
+
+<form  action="/ad_register" method="POST" class="contactForm" id="contact-form" enctype=multipart/form-data>
+<div class="inputBox">
+    <input type="text" name="adname" placeholder="Username " id="username" />
+</div>
+<div class="inputBox">
+    <input type="password" name="adpass" placeholder="Password" id="password" />
+</div>
+<div class="inputBox">
+    <input type="password" name="cadpass" placeholder="Confirm Password" id="cpassword" />
+</div>
+<br>
+<div class="inputBox">
+    <input type="submit" value="Register" name="adregister" />
+</div> <br>
+<div class="inputBox">
+    <p>Already registered? <a href="/login">Login here</a> </p>
+</div>
+                        
+</form> 
+{% endblock %}

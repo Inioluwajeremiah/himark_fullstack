@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="sub-title">Admin Login</p>
+<p class="success-message sms">{{success_message}}</p>
+<p class="error-message sms">{{error_message1}}</p>
+<p class="error-message sms">{{error_message2}}</p>
+
+<form  action="/login" method="POST" class="contactForm" id="contact-form" enctype=multipart/form-data>
+    <div class="inputBox">
+        <input type="text" name="username" placeholder="Username " id="username" />
+    </div>
+    <div class="inputBox">
+        <input type="password" name="password" placeholder="Password" id="password" />
+    </div>
+    <br>
+    <div class="inputBox">
+        <input type="submit" value="Login" name="login" />
+    </div> <br>
+    <div class="inputBox">
+        <p>Not yet registered? <a href="/ad_register">Register here</a> </p>
+    </div>
+                            
+</form> 
+{% endblock %}

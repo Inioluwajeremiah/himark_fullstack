@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block content %}
+<p class="wlc-text">Welcome <br />{{ current_user.username }}</p>
+<p class="sub-title">Admin Records</p>
+
+<table id="admin-scholarship-table">
+  <thead>
+    <tr>
+      <th>S/N</th>
+      <!-- <th>Passport</th> -->
+      <th>username</th>
+      <th>Password</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody id="admin-table-body">
+    {% for adm_data in adminRecords %}
+    <tr>
+      <td>{{adm_data.id}}</td>
+      <td>{{adm_data.username}}</td>
+      <td>{{adm_data.hashedPassword}}</td>
+      <td>
+        <button class="delete-btn table-btn">
+          <a href="/delete/{{adm_data.id}}">Del</a>
+        </button>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

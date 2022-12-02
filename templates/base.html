@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/index.css" />
+    <title>{% block title %}Hotel Management Software{% endblock %}</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo"></div>
+      <p class="title">HgSol_himark Full Stack Project on Hotel Management</p>
+    </header>
+    <ul>
+      {% if user.is_authenticated %}
+      <li><a href="/">HM Soft</a></li>
+      <li><a href="/ad_records">Admin</a></li>
+      <li><a href="/ad_register">New Admin</a></li>
+      <li><a href="/register">New Guest</a></li>
+      <li><a href="/logout">Logout</a></li>
+      {% else %}
+      <li><a href="/login">Login</a></li>
+      {% endif %}
+    </ul>
+
+    <div class="container">
+      {% block content %}
+      <p class="wlc-text">Welcome <br />{{ current_user.username }}</p>
+      <p class="sub-title">Hotel Records</p>
+      <p class="error-message sms">{{ fill_fields }}</p>
+      <form action="/search" method="POST" class="contactForm">
+        <div class="inputBox">
+          <input
+            type="text"
+            name="search-text"
+            placeholder="Search by Lastname"
+          />
+          <input type="submit" value="Search" name="search" />
+        </div>
+      </form>
+
+      <table id="admin-hotel-table">
+        <thead>
+          <tr>
+            <th>S/N</th>
+            <!-- <th>Passport</th> -->
+            <th>Lastname</th>
+            <th>Firstname</th>
+            <th>Middlename</th>
+            <th>Room type</th>
+            <th>Room no</th>
+            <th>Purpose</th>
+            <th>Date</th>
+            <th>Edit/Del</th>
+          </tr>
+        </thead>
+        <tbody id="admin-table-body">
+          {% for std_data in allRecords %}
+          <tr>
+            <td>{{std_data.id}}</td>
+            <td>{{std_data.lastname}}</td>
+            <td>{{std_data.firstname}}</td>
+            <td>{{std_data.middlename}}</td>
+            <td>{{std_data.roomtype}}</td>
+            <td>{{std_data.roomno}}</td>
+            <td>{{std_data.purpose}}</td>
+            <td>{{std_data.dateTime}}</td>
+            <td>
+              <button class="edit-btn table-btn">
+                <a href="/edit/{{std_data.id}}">Edit</a>
+              </button>
+              <br />
+              <button class="delete-btn table-btn">
+                <a href="/delete/{{std_data.id}}">Del</a>
+              </button>
+
+              <!-- <input type="submit" class="edit-btn table-btn" value="{{std_data.id}}">
+                Edit
+              </button>
+              <br />
+              <input type="submit" class="delete-btn table-btn" value="{{std_data.id}}">
+                Del
+              </button> -->
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      {% endblock %}
+    </div>
+    <footer>
+      <p>
+        Developed by HgSol_himark <br />
+        Grandida LLC
+      </p>
+    </footer>
+    <script src="../static/index.js"></script>
+  </body>
+</html>

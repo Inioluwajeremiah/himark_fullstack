@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="sub-title">Update data</p>
+<p class="success-message sms">{{ smsg }}</p>
+<p class="error-message sms">{{ fill_fields }}</p>
+<form  action="/update/{{edit_record.id}}" method="POST" class="contactForm" id="contact-form" enctype=multipart/form-data>
+    <div class="inputBox">
+        <input type="text" name="ufirstname" placeholder="Firstname " id="ufirstname" value="{{edit_record.firstname}}" />
+    </div>
+    <div class="inputBox">
+        <input type="text" name="ulastname" placeholder="Lasttname " id="ulastname" value="{{edit_record.lastname}}"/>
+    </div>
+    <div class="inputBox">
+        <input type="text" name="umiddlename" placeholder="Middlename " id="umiddlename" value="{{edit_record.middlename}}" />
+    </div>
+    <div class="inputBox">
+        <input type="text" name="uroomtype" placeholder="Room type" id="uroomtype" value="{{edit_record.roomtype}}"/>
+    </div>
+    <div class="inputBox">
+        <input type="number" name="uroomno" placeholder="Room No" id="uroomno" value="{{edit_record.roomno}}"/>
+    </div>
+    <div class="inputBox">
+        <input type="number" name="uduration" placeholder="Duration" id="uduration" value="{{edit_record.duration}}"/>
+    </div>
+    <div class="inputBox">
+        <textarea name="upurpose" placeholder="purpose" id="purpose" cols="30" rows="10">{{edit_record.purpose}}</textarea>
+    </div>
+    <!-- <div class="inputBox">
+        <p>Upload passport</p>
+        <input type=file name=file>
+    </div> <br> -->
+    <div class="inputBox">
+        <input type="submit" value="Update" name="update" />
+    </div> <br>
+                            
+</form> 
+
+{% endblock %}

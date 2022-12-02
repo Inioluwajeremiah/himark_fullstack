@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block tiltle %} Hallites DBM Software {% endblock %}
+{% block content %}
+<p class="sub-title">Register New Guest</p>
+<p class="success-message sms">{{ smsg }}</p>
+<p class="error-message sms">{{ fill_fields }}</p>
+
+<form  action="/register" method="POST" class="contactForm" id="contact-form" enctype=multipart/form-data>
+    <div class="inputBox">
+        <input type="text" name="firstname" placeholder="Firstname " id="firstname" />
+    </div>
+    <div class="inputBox">
+        <input type="text" name="lastname" placeholder="Lastname " id="lastname" />
+    </div>
+    <div class="inputBox">
+        <input type="text" name="middlename" placeholder="Middlename " id="middlename" />
+    </div>
+    <div class="inputBox">
+        <input type="text" name="roomtype" placeholder="Room type" id="roomtype" />
+    </div>
+    <div class="inputBox">
+        <input type="number" name="roomno" placeholder="Room No" id="roomno" />
+    </div>
+    <div class="inputBox">
+        <input type="number" name="duration" placeholder="Duration (days)" id="duration" />
+    </div>
+    <div class="inputBox">
+        <textarea name="purpose" id="purpose" cols="20" rows="5" placeholder="purpose"></textarea>
+    </div>
+    <div class="inputBox">
+        <input type="submit" value="Register" name="register" />
+    </div>
+                            
+</form> 
+
+{% endblock %}
